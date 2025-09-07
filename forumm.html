@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IntroPhysics Forum</title>
+
+  <!-- Polished styling -->
+  <style>
+    /* Body and layout */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #fffbe0, #fff3c4); /* soft yellow */
+      color: #000;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      background-color: #000; /* black top bar */
+      color: #FFD700; /* gold text */
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Main content */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    /* Intro message */
+    #forum-message {
+      max-width: 900px;
+      background-color: #fff9e6;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 25px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    /* Forum container */
+    #cusdis_thread {
+      width: 100%;
+      max-width: 900px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      padding: 25px 25px 60px 25px; /* extra bottom padding for input box */
+      position: relative;
+    }
+
+    /* Properly hide Cusdis branding without affecting layout */
+    .cusdis-comment-powered-by {
+      position: absolute !important;
+      left: -9999px !important;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        font-size: 1.4rem;
+      }
+      main {
+        padding: 20px 10px;
+      }
+      #forum-message {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header>IntroPhysics Forum</header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Intro message for users -->
+    <div id="forum-message">
+      Your suggestions help us improve IntroPhysics. Share your thoughts below and let us know what you want to see next!
+    </div>
+
+    <!-- Cusdis Forum Embed -->
+    <div id="cusdis_thread"
+         data-host="https://cusdis.com"
+         data-app-id="ea699255-9c69-40e7-ac44-f6160c25265e"
+         data-page-id="forum"
+         data-page-url="https://introphysics.netlify.app/forum.html"
+         data-page-title="IntroPhysics Forum">
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>© 2025 IntroPhysics | All Rights Reserved</footer>
+
+  <!-- Cusdis Script -->
+  <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+</body>
+</html>
