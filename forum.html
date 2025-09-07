@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forum - IntroPhysics</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #FFD600;
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #111;
+      color: #FFD600;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    .forum-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 2rem;
+      gap: 1rem;
+    }
+
+    .notification {
+      background: #fff8b0;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 700px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      border-left: 6px solid #111;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .notification h3 {
+      margin: 0;
+      margin-bottom: 0.5rem;
+      color: #111;
+    }
+
+    .notification p {
+      margin: 0;
+      line-height: 1.5;
+      color: #111;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    footer {
+      background: #111;
+      color: #FFD600;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>Discussion & Notifications</header>
+
+  <div class="forum-container" id="forum">
+    <!-- Notifications will load here -->
+  </div>
+
+  <footer>© 2025 IntroPhysics | Made with ❤️ by Ashutosh</footer>
+
+  <script>
+    // All notifications posted by you (Ashutosh)
+    const notifications = [
+      {
+        title: "Welcome to IntroPhysics Forum!",
+        message: "Hi! I am Ashutosh, the creator of this site. Here you will get all notifications about new lectures, updates, and important notes. Stay tuned!"
+      },
+      {
+        title: "New Lecture Uploaded",
+        message: "Chapter 1: Motion is now available. Check the lectures page to watch it."
+      },
+      {
+        title: "Important Update",
+        message: "Make sure to download the latest PDF notes from the Resources page."
+      }
+      // You can add more notifications here
+    ];
+
+    const forum = document.getElementById('forum');
+
+    function loadNotifications() {
+      notifications.forEach(notif => {
+        const div = document.createElement('div');
+        div.className = 'notification';
+        div.innerHTML = `<h3>${notif.title}</h3><p>${notif.message}</p>`;
+        forum.prepend(div); // latest notifications on top
+      });
+    }
+
+    loadNotifications();
+  </script>
+</body>
+</html>
