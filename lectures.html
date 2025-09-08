@@ -3,110 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IntroPhysics Lectures</title>
+  <title>Lectures - IntroPhysics</title>
   <style>
     body {
       margin: 0;
       font-family: "Segoe UI", sans-serif;
-      background: #FFD600;
+      background: #FFD54F; /* Rich golden yellow */
       color: #111;
-      display: flex;
-      height: 100vh;
     }
 
-    /* Sidebar */
-    .sidebar {
-      width: 25%;
+    header {
       background: #111;
       color: #FFD600;
-      padding: 1.5rem;
-      box-shadow: 4px 0 10px rgba(0,0,0,0.4);
-      overflow-y: auto;
-    }
-
-    .sidebar h2 {
-      margin-top: 0;
-      font-size: 1.5rem;
+      padding: 1rem;
       text-align: center;
-      border-bottom: 2px solid #FFD600;
-      padding-bottom: 0.5rem;
-    }
-
-    .lecture-list {
-      list-style: none;
-      padding: 0;
-      margin: 1rem 0;
-    }
-
-    .lecture-list li {
-      margin: 0.7rem 0;
-    }
-
-    .lecture-list button {
-      width: 100%;
-      padding: 0.8rem;
-      background: #FFD600;
-      border: none;
+      font-size: 1.5rem;
       font-weight: bold;
-      border-radius: 8px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Lecture List */
+    .sidebar {
+      flex: 1;
+      min-width: 250px;
+      background: #FFC107; /* Darker golden yellow */
+      border-right: 2px solid #111;
+      padding: 1rem;
+    }
+
+    .lecture {
+      background: #fff9c4; /* pale yellow card */
+      margin: 0.6rem 0;
+      padding: 0.8rem;
+      border-radius: 10px;
       cursor: pointer;
-      transition: 0.3s;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      transition: transform 0.2s, background 0.2s;
     }
 
-    .lecture-list button:hover {
-      background: #fff000;
-      transform: scale(1.05);
+    .lecture:hover {
+      background: #FFD600;
+      transform: translateX(5px);
     }
 
-    /* Video Player Area */
+    /* Video Player Section */
     .content {
-      width: 75%;
+      flex: 3;
+      min-width: 300px;
       padding: 1rem;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-    }
-
-    .video-container {
-      width: 100%;
-      height: 90%;
-      display: flex;
       align-items: center;
-      justify-content: center;
+      background: #FFEB3B; /* lighter yellow for contrast */
     }
 
     iframe {
       width: 100%;
-      height: 100%;
+      max-width: 900px;
+      height: 500px;
       border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Mobile layout */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        border-right: none;
+        border-bottom: 2px solid #111;
+      }
+
+      iframe {
+        height: 250px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <h2>Lectures</h2>
-    <ul class="lecture-list">
-      <li><button onclick="loadLecture('https://www.youtube.com/embed/dQw4w9WgXcQ')">Lecture 1: Motion</button></li>
-      <li><button onclick="loadLecture('https://www.youtube.com/embed/aqz-KE-bpKQ')">Lecture 2: Laws of Motion</button></li>
-      <li><button onclick="loadLecture('https://www.youtube.com/embed/IUN664s7N-c')">Lecture 3: Work, Power & Energy</button></li>
-    </ul>
-  </div>
 
-  <!-- Main Content -->
-  <div class="content">
-    <div class="video-container">
-      <iframe id="videoPlayer" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-              frameborder="0" allowfullscreen></iframe>
+  <header>📚 Physics Lectures</header>
+
+  <div class="container">
+    <!-- Sidebar Lecture List -->
+    <div class="sidebar">
+      <h3>Mechanics</h3>
+      <div class="lecture" onclick="loadVideo('https://www.youtube.com/embed/VIDEO_ID1')">
+        Introduction to Mechanics
+      </div>
+      <div class="lecture" onclick="loadVideo('https://www.youtube.com/embed/VIDEO_ID2')">
+        Laws of Motion
+      </div>
+
+      <h3>Optics</h3>
+      <div class="lecture" onclick="loadVideo('https://www.youtube.com/embed/VIDEO_ID3')">
+        Reflection Basics
+      </div>
+      <div class="lecture" onclick="loadVideo('https://www.youtube.com/embed/VIDEO_ID4')">
+        Refraction Explained
+      </div>
+    </div>
+
+    <!-- Video Player -->
+    <div class="content">
+      <iframe id="videoPlayer" src="https://www.youtube.com/embed/VIDEO_ID1" allowfullscreen></iframe>
     </div>
   </div>
 
   <script>
-    function loadLecture(url) {
+    function loadVideo(url) {
       document.getElementById("videoPlayer").src = url;
     }
   </script>
+
 </body>
 </html>
