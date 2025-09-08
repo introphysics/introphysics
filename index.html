@@ -444,6 +444,15 @@
   window.chtlConfig = { chatbotId: "3986622253" }
 </script>
 <script async data-id="3986622253" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "52de3f4a-80b7-4eee-83d8-28ddccdccede",
+    });
+  });
+</script>
 <body>
 
   <!-- Particle animation -->
