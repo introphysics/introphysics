@@ -25,6 +25,7 @@
       max-width: 400px;
       width: 90%;
       text-align: center;
+      transition: all 0.3s ease;
     }
 
     h1 {
@@ -42,6 +43,23 @@
     signup-form {
       width: 100%;
     }
+
+    .go-home {
+      display: none; /* hidden by default */
+      padding: 12px 20px;
+      background: #f4c400;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .go-home:hover {
+      background: #e0b800;
+    }
   </style>
 </head>
 <body>
@@ -52,6 +70,7 @@
 
     <!-- Userfront login/signup form -->
     <signup-form 
+      id="loginForm"
       tenant-id="8nwxmr5b"
       theme='{
         "colors": {
@@ -67,18 +86,34 @@
         "extras": { "hideSecuredMessage": true }
       }'>
     </signup-form>
+
+    <!-- Go Home button -->
+    <button id="goHome" class="go-home" onclick="window.location.href='/home'">
+      enter the site →
+    </button>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // ✅ Check if already logged in
+      const loginForm = document.getElementById("loginForm");
+      const goHomeBtn = document.getElementById("goHome");
+
+      // If already logged in
       if (Userfront.user && Userfront.user.userId) {
-        window.location.href = "/home";
+        loginForm.style.display = "none";
+        goHomeBtn.style.display = "inline-block";
       }
 
-      // ✅ Listen for login event
+      // After login event
       Userfront.on("login", function () {
-        window.location.href = "/home";
+        loginForm.style.display = "none";
+        goHomeBtn.style.display = "inline-block";
+      });
+
+      // After logout event → show login form again
+      Userfront.on("logout", function () {
+        loginForm.style.display = "block";
+        goHomeBtn.style.display = "none";
       });
     });
   </script>
