@@ -25,7 +25,6 @@
       max-width: 400px;
       width: 90%;
       text-align: center;
-      transition: all 0.3s ease;
     }
 
     h1 {
@@ -44,7 +43,7 @@
       width: 100%;
     }
 
-    .go-home {
+    #goHome {
       display: none;
       padding: 12px 20px;
       background: #f4c400;
@@ -57,7 +56,7 @@
       transition: background 0.3s;
     }
 
-    .go-home:hover {
+    #goHome:hover {
       background: #e0b800;
     }
   </style>
@@ -69,53 +68,63 @@
        Please login or sign up to continue.</p>
 
     <!-- Userfront login/signup form -->
-    <signup-form 
-      id="loginForm"
-      tenant-id="8nwxmr5b"
-      theme='{
-        "colors": {
-          "light": "#ffffff",
-          "dark": "#ffd500",
-          "accent": "#ffc014",
-          "lightBackground": "#fdfdfd",
-          "darkBackground": "#2d2d2d"
-        },
-        "colorScheme": "auto",
-        "fontFamily": "Avenir, Helvetica, Arial, sans-serif",
-        "size": "default",
-        "extras": { "hideSecuredMessage": true }
-      }'>
-    </signup-form>
+    <div id="formWrapper">
+      <signup-form 
+        tenant-id="8nwxmr5b"
+        theme='{
+          "colors": {
+            "light": "#ffffff",
+            "dark": "#ffd500",
+            "accent": "#ffc014",
+            "lightBackground": "#fdfdfd",
+            "darkBackground": "#2d2d2d"
+          },
+          "colorScheme": "auto",
+          "fontFamily": "Avenir, Helvetica, Arial, sans-serif",
+          "size": "default",
+          "extras": { "hideSecuredMessage": true }
+        }'>
+      </signup-form>
+    </div>
 
     <!-- Go Home button -->
-    <button id="goHome" class="go-home" onclick="window.location.href='/home'">
-      Go to Home →
+    <button id="goHome" onclick="window.location.href='/home'">
+      Continue to Home →
     </button>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const loginForm = document.getElementById("loginForm");
+      const formWrapper = document.getElementById("formWrapper");
       const goHomeBtn = document.getElementById("goHome");
 
-      // Wait until Userfront finishes loading
+      function showButton() {
+        if (formWrapper) formWrapper.style.display = "none";
+        goHomeBtn.style.display = "inline-block";
+      }
+
+      function showForm() {
+        if (formWrapper) formWrapper.style.display = "block";
+        goHomeBtn.style.display = "none";
+      }
+
+      // Run after Userfront is ready
       Userfront.on("ready", function () {
         if (Userfront.user && Userfront.user.userId) {
-          loginForm.style.display = "none";
-          goHomeBtn.style.display = "inline-block";
+          showButton();
+        } else {
+          showForm();
         }
       });
 
-      // When user logs in
+      // On login event
       Userfront.on("login", function () {
-        loginForm.style.display = "none";
-        goHomeBtn.style.display = "inline-block";
+        showButton();
       });
 
-      // When user logs out
+      // On logout event
       Userfront.on("logout", function () {
-        loginForm.style.display = "block";
-        goHomeBtn.style.display = "none";
+        showForm();
       });
     });
   </script>
