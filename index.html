@@ -45,7 +45,7 @@
     }
 
     .go-home {
-      display: none; /* hidden by default */
+      display: none;
       padding: 12px 20px;
       background: #f4c400;
       color: #fff;
@@ -89,7 +89,7 @@
 
     <!-- Go Home button -->
     <button id="goHome" class="go-home" onclick="window.location.href='/home'">
-      enter the site →
+      Go to Home →
     </button>
   </div>
 
@@ -98,19 +98,21 @@
       const loginForm = document.getElementById("loginForm");
       const goHomeBtn = document.getElementById("goHome");
 
-      // If already logged in
-      if (Userfront.user && Userfront.user.userId) {
-        loginForm.style.display = "none";
-        goHomeBtn.style.display = "inline-block";
-      }
+      // Wait until Userfront finishes loading
+      Userfront.on("ready", function () {
+        if (Userfront.user && Userfront.user.userId) {
+          loginForm.style.display = "none";
+          goHomeBtn.style.display = "inline-block";
+        }
+      });
 
-      // After login event
+      // When user logs in
       Userfront.on("login", function () {
         loginForm.style.display = "none";
         goHomeBtn.style.display = "inline-block";
       });
 
-      // After logout event → show login form again
+      // When user logs out
       Userfront.on("logout", function () {
         loginForm.style.display = "block";
         goHomeBtn.style.display = "none";
