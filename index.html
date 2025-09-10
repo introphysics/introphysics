@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IntroPhysics | Login</title>
   <script defer src="https://cdn.userfront.com/@userfront/toolkit@latest/dist/web-component.umd.js"></script>
   <style>
@@ -47,12 +47,12 @@
 <body>
   <div class="container">
     <h1>Welcome to IntroPhysics</h1>
-    <p>Your gateway to learning physics with clarity and depth.  
-    Please login or sign up to continue.</p>
+    <p>Your gateway to learning physics with clarity and depth.<br>
+       Please login or sign up to continue.</p>
 
     <!-- Userfront login/signup form -->
     <signup-form 
-      tenant-id="8nwxmr5b" 
+      tenant-id="8nwxmr5b"
       theme='{
         "colors": {
           "light": "#ffffff",
@@ -70,11 +70,16 @@
   </div>
 
   <script>
-    // If already logged in, redirect straight to home
     document.addEventListener("DOMContentLoaded", function () {
-      if (Userfront.accessToken()) {
-        window.location.href = "/home";
-      }
+      // Wait until Userfront is ready before checking session
+      Userfront.init("8nwxmr5b");
+
+      Userfront.on("ready", function () {
+        if (Userfront.user && Userfront.user.userId) {
+          // User is actually logged in
+          window.location.href = "/home";
+        }
+      });
     });
   </script>
 </body>
