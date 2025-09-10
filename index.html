@@ -1,98 +1,81 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IntroPhysics | Login</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IntroPhysics | Login</title>
+  <script defer src="https://cdn.userfront.com/@userfront/toolkit@latest/dist/web-component.umd.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #fffbea; /* yellowish white */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+    }
 
-    <!-- Userfront Script (DO NOT TOUCH) -->
-    <script defer src="https://cdn.userfront.com/@userfront/toolkit@latest/dist/web-component.umd.js"></script>
+    .container {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      padding: 40px 30px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
 
-    <!-- Styling -->
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Avenir", Helvetica, Arial, sans-serif;
-        background-color: #fffbea;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
+    h1 {
+      color: #f4c400; /* primary yellow */
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    signup-form {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to IntroPhysics</h1>
+    <p>Your gateway to learning physics with clarity and depth.  
+    Please login or sign up to continue.</p>
+
+    <!-- Userfront login/signup form -->
+    <signup-form 
+      tenant-id="8nwxmr5b" 
+      theme='{
+        "colors": {
+          "light": "#ffffff",
+          "dark": "#ffd500",
+          "accent": "#ffc014",
+          "lightBackground": "#fdfdfd",
+          "darkBackground": "#2d2d2d"
+        },
+        "colorScheme": "auto",
+        "fontFamily": "Avenir, Helvetica, Arial, sans-serif",
+        "size": "default",
+        "extras": { "hideSecuredMessage": true }
+      }'>
+    </signup-form>
+  </div>
+
+  <script>
+    // If already logged in, redirect straight to home
+    document.addEventListener("DOMContentLoaded", function () {
+      if (Userfront.accessToken()) {
+        window.location.href = "/home";
       }
-
-      .login-container {
-        width: 100%;
-        max-width: 420px;
-        background: #ffffff;
-        padding: 2.2rem;
-        border-radius: 28px;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-        text-align: center;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-      }
-
-      .login-container:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.1);
-      }
-
-      .logo {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #ffd500;
-        margin-bottom: 0.5rem;
-      }
-
-      .subtitle {
-        font-size: 1rem;
-        color: #555;
-        margin-bottom: 1.6rem;
-      }
-
-      signup-form {
-        width: 100%;
-        display: block;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="login-container">
-      <div class="logo">IntroPhysics</div>
-      <div class="subtitle">Login to access the site</div>
-
-      <!-- Userfront Signup/Login Form -->
-      <signup-form
-        tenant-id="8nwxmr5b"
-        theme='{
-          "colors": {
-            "light": "#ffffff",
-            "dark": "#ffd500",
-            "accent": "#ffd500",
-            "lightBackground": "#fffbea",
-            "darkBackground": "#2d2d2d"
-          },
-          "colorScheme": "auto",
-          "fontFamily": "Avenir, Helvetica, Arial, sans-serif",
-          "size": "default",
-          "extras": {"hideSecuredMessage": true}
-        }'
-      ></signup-form>
-    </div>
-
-    <!-- Redirect Logic -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // ✅ Check if user is logged in (userId exists)
-        if (Userfront.user && Userfront.user.userId) {
-          window.location.href = "/dashboard.html"; // change to your homepage
-        }
-
-        // ✅ After login, redirect too
-        Userfront.on("login", function () {
-          window.location.href = "/dashboard.html"; // change to your homepage
-        });
-      });
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>
