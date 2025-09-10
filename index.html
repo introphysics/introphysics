@@ -120,8 +120,34 @@
       });
     });
   </script>  
+      <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Check if user is logged in
+        if (Userfront.tokens.accessToken) {
+          document.getElementById("statusBox").innerHTML = `
+            <h2 style="color:#ffcc00;">You are logged in ✅</h2>
+            <p>Click below to continue to the site.</p>
+            <a href="/home.html" 
+               style="display:inline-block; margin-top:20px; padding:12px 24px; background:#ffcc00; color:#000; border-radius:8px; text-decoration:none; font-weight:bold;">
+              Continue to Home
+            </a>
+            <br><br>
+            <button onclick="Userfront.logout()" 
+                    style="padding:10px 20px; border:none; border-radius:6px; background:#eee; cursor:pointer;">
+              Logout
+            </button>
+          `;
+        } else {
+          document.getElementById("statusBox").innerHTML = `
+            <h2 style="color:#ff4444;">You are not logged in ❌</h2>
+            <p>Please <a href="/login.html">login here</a>.</p>
+          `;
+        }
+      });
+    </script>
 </body>
 </html>
+
 
 
 
