@@ -583,8 +583,21 @@
       }
     });
   </script>
-
+ <auth-container tenant-id="8nwxmr5b" login-path="/login.html">
+      <div style="background:white; padding:40px; border-radius:12px; display:inline-block; box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        <h2 style="color:#ffcc00;">Welcome to IntroPhysics 🎉</h2>
+        <p>You’re logged in! Click below to continue.</p>
+        <a href="/dashboard.html" style="display:inline-block; margin-top:20px; padding:12px 24px; background:#ffcc00; color:#000; border-radius:8px; text-decoration:none; font-weight:bold;">
+          Continue to Site
+        </a>
+        <br><br>
+        <button onclick="Userfront.logout()" style="padding:10px 20px; border:none; border-radius:6px; background:#eee; cursor:pointer;">
+          Logout
+        </button>
+      </div>
+    </auth-container>
 </body>
 </html>
+
 
 
