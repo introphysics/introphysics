@@ -71,14 +71,14 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Wait until Userfront is ready before checking session
-      Userfront.init("8nwxmr5b");
+      // ✅ Check if already logged in
+      if (Userfront.user && Userfront.user.userId) {
+        window.location.href = "/home";
+      }
 
-      Userfront.on("ready", function () {
-        if (Userfront.user && Userfront.user.userId) {
-          // User is actually logged in
-          window.location.href = "/home";
-        }
+      // ✅ Listen for login event
+      Userfront.on("login", function () {
+        window.location.href = "/home";
       });
     });
   </script>
