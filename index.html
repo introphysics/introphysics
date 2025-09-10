@@ -83,14 +83,14 @@
     <!-- Redirect Logic -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // ✅ If user is already logged in
-        if (Userfront.user) {
-          window.location.href = "/home.html"; // change this to your homepage
+        // ✅ Check if user is logged in (userId exists)
+        if (Userfront.user && Userfront.user.userId) {
+          window.location.href = "/dashboard.html"; // change to your homepage
         }
 
         // ✅ After login, redirect too
         Userfront.on("login", function () {
-          window.location.href = "/home.html"; // change this to your homepage
+          window.location.href = "/dashboard.html"; // change to your homepage
         });
       });
     </script>
