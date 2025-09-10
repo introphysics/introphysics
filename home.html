@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><script defer src="https://cdn.userfront.com/@userfront/toolkit@latest/dist/web-component.umd.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // If not logged in, redirect to /login
+    if (!Userfront.accessToken()) {
+      window.location.href = "/login";
+    }
+  });
+</script>
   <meta name="robots" content="index, follow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -578,3 +586,4 @@
 
 </body>
 </html>
+
