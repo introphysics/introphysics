@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=home.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #FFEB3B;
+      font-family: "Segoe UI", sans-serif;
+      color: #111;
+      margin: 0;
+    }
+    .message {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="message">
+    Redirecting to home...
+  </div>
+  <script>
+    // Fallback redirect in case meta doesn't work
+    setTimeout(() => {
+      window.location.href = "home.html";
+    }, 500);
+  </script>
+</body>
+</html>
